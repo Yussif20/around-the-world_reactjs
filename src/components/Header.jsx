@@ -3,10 +3,12 @@ import ThemeSwitcher from './ThemeSwitcher';
 
 const Header = () => {
   return (
-    <nav className="flex justify-between py-8 px-6 bg-blue-300">
-      <Logo />
-      <ThemeSwitcher />
-    </nav>
+    <header className="mb-6 shadow bg-[#f9fafb] md:mb-12 dark:bg-[#1F2937] px-10">
+      <div className="container h-20 mx-auto flex items-center justify-between ">
+        <Logo />
+        <ThemeSwitcher />
+      </div>
+    </header>
   );
 };
 
