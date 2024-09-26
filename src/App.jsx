@@ -1,11 +1,9 @@
-import Logo from './components/Logo';
-import ThemeSwitcher from './components/ThemeSwitcher';
+import Header from './components/Header';
 
 function App() {
   return (
     <>
-      <Logo />
-      <ThemeSwitcher />
+      <Header />
     </>
   );
 }
