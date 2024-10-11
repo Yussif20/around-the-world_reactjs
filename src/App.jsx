@@ -34,7 +34,10 @@ function App() {
         <>
           <div className="container mx-auto px-5 md:px-8">
             <div className="flex flex-col justify-between gap-10 md:h-14 md:flex-row md:gap-0">
-              <SearchBar />
+              <SearchBar
+                countryList={countriesList}
+                setFilteredCountries={setFilteredCountries}
+              />
               <RegionMenu
                 countryList={countriesList}
                 setFilteredCountries={setFilteredCountries}

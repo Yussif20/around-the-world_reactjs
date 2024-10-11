@@ -1,6 +1,20 @@
-const SearchBar = () => {
+/* eslint-disable react/prop-types */
+const SearchBar = ({ countryList, setFilteredCountries }) => {
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchTerm = e.target.elements.search.value;
+    const filteredCountries =
+      !searchTerm || searchTerm === ''
+        ? countryList
+        : countryList.filter((country) =>
+            country.name.official
+              .toLowerCase()
+              .includes(searchTerm.toLowerCase())
+          );
+    setFilteredCountries(filteredCountries);
+  };
   return (
-    <form className="relative flex-1">
+    <form onSubmit={handleSearch} className="relative flex-1">
       <div className="absolute left-8 top-5">
         <svg
           width="18"
