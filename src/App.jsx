@@ -1,3 +1,4 @@
+import CountryList from './components/CountryList';
 import Header from './components/Header';
 import RegionMenu from './components/RegionMenu';
 import SearchBar from './components/SearchBar';
@@ -12,6 +13,7 @@ function App() {
           <RegionMenu />
         </div>
       </div>
+      <CountryList />
     </div>
   );
 }
