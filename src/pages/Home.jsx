@@ -1,29 +1,18 @@
-import { useEffect, useState } from 'react';
 import CountryList from '../components/CountryList';
 import RegionMenu from '../components/RegionMenu';
 import SearchBar from '../components/SearchBar';
 import ErrorMessage from '../components/ErrorMessage';
+import useFetchData from '../hooks/useFetchData';
 
 export const Home = () => {
-  const [countriesList, setCountriesList] = useState([]);
-  const [filteredCountries, setFilteredCountries] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  useEffect(() => {
-    fetchCountryData();
-  }, []);
+  const {
+    isLoading,
+    isError,
+    result,
+    filteredCountries,
+    setFilteredCountries,
+  } = useFetchData();
 
-  const fetchCountryData = () => {
-    fetch('https://restcountries.com/v3.1/all')
-      .then((res) =>
-        res.json().then((data) => {
-          setCountriesList(data);
-          setFilteredCountries(data);
-        })
-      )
-      .catch(() => setIsError(true))
-      .finally(() => setIsLoading(false));
-  };
   return (
     <>
       {isLoading && <ErrorMessage message={'Data is Loading...'} />}
@@ -33,11 +22,11 @@ export const Home = () => {
           <div className="container mx-auto px-5 md:px-8">
             <div className="flex flex-col justify-between gap-10 md:h-14 md:flex-row md:gap-0">
               <SearchBar
-                countryList={countriesList}
+                countryList={result}
                 setFilteredCountries={setFilteredCountries}
               />
               <RegionMenu
-                countryList={countriesList}
+                countryList={result}
                 setFilteredCountries={setFilteredCountries}
               />
             </div>
