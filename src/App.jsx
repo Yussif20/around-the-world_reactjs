@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Home, Layout, ErrorPage, Country } from './pages/index';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -18,3 +17,7 @@ function App() {
 }
 
 export default App;
+
+//TODO fix styles ✅
+//TODO deploy on vercel ✅
+//TODO put results into pages

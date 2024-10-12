@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const CountryCard = ({ flag, name, capital, population, region }) => {
   return (
     <Link to={name}>
-      <div className="h-full rounded bg-gray-50 p-3 pb-9 shadow-md dark:bg-gray-800 lg:w-[264px]">
+      <div className="h-full rounded bg-gray-50 p-3 pb-9 shadow-md dark:bg-gray-800 w-[264px]">
         <img
           className="mb-4 h-40 w-full rounded-md"
           src={flag}
@@ -15,7 +15,9 @@ const CountryCard = ({ flag, name, capital, population, region }) => {
         <div className="ml-3 flex flex-col gap-2">
           <p>
             <span className="font-semibold">Population: </span>
-            <span className="font-light">{population}</span>
+            <span className="font-light">
+              {parseInt(population).toLocaleString()}
+            </span>
           </p>
           <p>
             <span className="font-semibold">Region: </span>
