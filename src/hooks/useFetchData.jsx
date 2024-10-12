@@ -7,6 +7,14 @@ const useFetchData = (country) => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    if (country) {
+      fetchDataFromApi();
+    } else {
+      fetchDataFromLocalStorage();
+    }
+  }, []);
+
+  const fetchDataFromApi = () => {
     let url = 'https://restcountries.com/v3.1/all';
     setIsLoading(true);
 
@@ -21,12 +29,22 @@ const useFetchData = (country) => {
           } else {
             setResult(data);
             setFilteredCountries(data);
+            localStorage.setItem('countries', JSON.stringify(data));
           }
         })
       )
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
-  }, []);
+  };
+  const fetchDataFromLocalStorage = () => {
+    let data = JSON.parse(localStorage.getItem('countries'));
+    if (data) {
+      setResult(data);
+      setFilteredCountries(data);
+    } else {
+      fetchDataFromApi();
+    }
+  };
 
   return {
     result,
